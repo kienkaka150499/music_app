@@ -76,14 +76,15 @@ flutter:
     - assets/images/dochoooooo.jpg
     - assets/images/vi_me_anh_bat_chia_tay_poster.jpg
     - assets/images/co_khong_giu_mat_dung_tim_poster.jpg
-    - assets/images/play.svg    - assets/images/play_button_mini.svg    - assets/images/shuffle_random.svg    - assets/images/loop.svg    - assets/images/next.svg    - assets/images/previous.svg
+    - assets/images/play.svg
+    - assets/images/play_button_mini.svg
+    - assets/images/shuffle_random.svg
+    - assets/images/loop.svg
+    - assets/images/next.svg
+    - assets/images/previous.svg
     - assets/images/three_dots.svg
     - assets/images/comment.svg
-
-
-
-
-
+    - assets/images/sweep_arrows.svg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

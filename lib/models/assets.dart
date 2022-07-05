@@ -16,8 +16,9 @@ class Assets{
   static const String playMiniIcon='assets/images/play_button_mini.svg';
   static const String threeDotsIcon='assets/images/three_dots.svg';
   static const String nextIcon='assets/images/next.svg';
-  static const String previousIcon='assets/images/play_button_mini.svg';
-  static const String shuffleIcon='assets/images/play_button_mini.svg';
-  static const String loopIcon='assets/images/play_button_mini.svg';
+  static const String previousIcon='assets/images/previous.svg';
+  static const String shuffleIcon='assets/images/shuffle_random.svg';
+  static const String sweepIcon='assets/images/sweep_arrows.svg';
+  static const String loopIcon='assets/images/loop.svg';
   static const String commentIcon='assets/images/comment.svg';
 }
