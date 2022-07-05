@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_app/fake_data.dart';
-import 'package:music_app/widgets/category_gridview.dart';
 import 'package:music_app/widgets/side_menu.dart';
 
 import '../models/assets.dart';
 import '../models/song.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const String routeName = '/HomeScreen';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -198,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(
             width: ScreenUtil().setWidth(1000),
-            height: 600,
+            height: ScreenUtil().setWidth(300),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: ScreenUtil().setWidth(400),
@@ -220,6 +221,90 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecentlySong() {
+    List<Song> songs = FakeSong().songs;
+    return SizedBox(
+      width: 900,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 20, top: 50, bottom: 20),
+            child: Text(
+              'Recently',
+              style: TextStyle(color: Colors.white, fontSize: 30),
+            ),
+          ),
+          SizedBox(
+            width: 900,
+            height: ScreenUtil().setHeight(600),
+            child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: songs.length,
+                itemBuilder: (context, index) {
+                  //Song song=songs[index] as Song;
+                  return Container(
+                      height: ScreenUtil().setHeight(180),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: ScreenUtil().setHeight(20),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.purple.withOpacity(0.5),
+                            ),
+                            height: ScreenUtil().setHeight(120),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: ScreenUtil().setWidth(15),
+                                ),
+                                Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      songs[index].songName,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(songs[index].singer,
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 13))
+                                  ],
+                                )),
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/PlayScreen',arguments: {'songs': songs[index]});
+                                  },
+                                  icon: SvgPicture.asset(
+                                    Assets.playMiniIcon,
+                                    width: ScreenUtil().setWidth(80),
+                                    color: Colors.white.withOpacity(0.6),
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  Assets.threeDotsIcon,
+                                  width: ScreenUtil().setWidth(100),
+                                  color: Colors.white.withOpacity(0.6),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ));
+                }),
           )
         ],
       ),
@@ -266,7 +351,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     _buildHeader(),
                     _buildTrending(),
-                    _buildSearchKeyWordCategories()
+                    _buildSearchKeyWordCategories(),
+                    _buildRecentlySong()
                   ],
                 ),
               ),

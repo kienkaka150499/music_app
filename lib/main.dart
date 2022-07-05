@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:music_app/screen/home_screen.dart';
+import 'package:music_app/screen/play_screen.dart';
 
 void main() {
   runApp(MusicApp());
@@ -16,6 +17,11 @@ class MusicApp extends StatelessWidget {
         designSize: Size(1080, 1920 ),
         builder: (context, widget) =>
             MaterialApp(
+              initialRoute: '/',
+              routes: {
+                "/HomeScreen":(context)=>HomeScreen(),
+                "/PlayScreen":(context)=>PlayScreen(),
+              },
               debugShowCheckedModeBanner: false,
               theme: ThemeData(primaryColor: Colors.purple),
               home: HomeScreen(),
